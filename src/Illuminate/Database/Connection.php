@@ -12,8 +12,8 @@ use DateTimeInterface;
 use Illuminate\Support\Arr;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Database\Query\Processors\Processor;
 use Doctrine\DBAL\Connection as DoctrineConnection;
+use Illuminate\Database\Query\Processors\Processor;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use Illuminate\Database\Query\Grammars\Grammar as QueryGrammar;
@@ -793,7 +793,7 @@ class Connection implements ConnectionInterface
      */
     protected function reconnectIfMissingConnection()
     {
-        if (is_null($this->getPdo()) || is_null($this->getReadPdo())) {
+        if (is_null($this->pdo)) {
             $this->reconnect();
         }
     }
