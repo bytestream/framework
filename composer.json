@@ -3,7 +3,7 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
-    "homepage": "http://laravel.com",
+    "homepage": "https://laravel.com",
     "support": {
         "issues": "https://github.com/laravel/framework/issues",
         "source": "https://github.com/laravel/framework"
@@ -11,7 +11,7 @@
     "authors": [
         {
             "name": "Taylor Otwell",
-            "email": "taylorotwell@gmail.com"
+            "email": "taylor@laravel.com"
         }
     ],
     "require": {
@@ -26,7 +26,6 @@
         "mtdowling/cron-expression": "~1.0",
         "nesbot/carbon": "~1.20",
         "paragonie/random_compat": "~1.4",
-        "psy/psysh": "0.7.*",
         "swiftmailer/swiftmailer": "~5.1",
         "symfony/console": "2.8.*|3.0.*",
         "symfony/debug": "2.8.*|3.0.*",
@@ -102,6 +101,7 @@
         "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.4).",
         "fzaninotto/faker": "Required to use the eloquent factory builder (~1.4).",
         "guzzlehttp/guzzle": "Required to use the Mailgun and Mandrill mail drivers and the ping methods on schedules (~5.3|~6.0).",
+        "laravel/tinker": "Required to use the tinker console command (~1.0).",
         "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
         "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0).",
         "pda/pheanstalk": "Required to use the beanstalk queue driver (~3.0).",
