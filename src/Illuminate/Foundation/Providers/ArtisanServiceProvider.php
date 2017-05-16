@@ -10,7 +10,6 @@ use Illuminate\Foundation\Console\DownCommand;
 use Illuminate\Auth\Console\ClearResetsCommand;
 use Illuminate\Cache\Console\CacheTableCommand;
 use Illuminate\Foundation\Console\ServeCommand;
-use Illuminate\Foundation\Console\TinkerCommand;
 use Illuminate\Queue\Console\FailedTableCommand;
 use Illuminate\Foundation\Console\AppNameCommand;
 use Illuminate\Foundation\Console\JobMakeCommand;
@@ -65,7 +64,6 @@ class ArtisanServiceProvider extends ServiceProvider
         'RouteCache' => 'command.route.cache',
         'RouteClear' => 'command.route.clear',
         'RouteList' => 'command.route.list',
-        'Tinker' => 'command.tinker',
         'Up' => 'command.up',
         'ViewClear' => 'command.view.clear',
     ];
@@ -485,18 +483,6 @@ class ArtisanServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.test.make', function ($app) {
             return new TestMakeCommand($app['files']);
-        });
-    }
-
-    /**
-     * Register the command.
-     *
-     * @return void
-     */
-    protected function registerTinkerCommand()
-    {
-        $this->app->singleton('command.tinker', function () {
-            return new TinkerCommand;
         });
     }
 
