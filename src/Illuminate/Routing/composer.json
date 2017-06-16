@@ -22,9 +22,9 @@
         "illuminate/session": "5.2.*",
         "illuminate/support": "5.2.*",
         "symfony/debug": "2.8.*|3.0.*",
-        "symfony/http-foundation": "2.8.*|3.0.*",
-        "symfony/http-kernel": "2.8.*|3.0.*",
-        "symfony/routing": "2.8.*|3.0.*"
+        "symfony/http-foundation": "3.3.*",
+        "symfony/http-kernel": "~3.3",
+        "symfony/routing": "~3.3"
     },
     "autoload": {
         "psr-4": {
