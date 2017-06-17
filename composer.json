@@ -30,13 +30,13 @@
         "symfony/console": "2.8.*|3.0.*",
         "symfony/debug": "2.8.*|3.0.*",
         "symfony/finder": "2.8.*|3.0.*",
-        "symfony/http-foundation": "2.8.*|3.0.*",
-        "symfony/http-kernel": "2.8.*|3.0.*",
+        "symfony/http-foundation": "3.3.*",
+        "symfony/http-kernel": "3.3.*",
         "symfony/polyfill-php56": "~1.0",
         "symfony/process": "2.8.*|3.0.*",
-        "symfony/routing": "2.8.*|3.0.*",
+        "symfony/routing": "3.3.*",
         "symfony/translation": "2.8.*|3.0.*",
-        "symfony/var-dumper": "2.8.*|3.0.*",
+        "symfony/var-dumper": "3.3.*",
         "vlucas/phpdotenv": "~2.2"
     },
     "replace": {
