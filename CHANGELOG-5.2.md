@@ -1,10 +1,21 @@
 # Release Notes
 
-## [Unreleased]
+## v5.2.48 (2017-09-07)
 
-### Fixed
+## Fixed
+- Fixed memory leak in unit tests ([#21022](https://github.com/laravel/framework/pull/21022))
+- Fixed mime validation vulnerability ([#20442](https://github.com/laravel/framework/pull/20442))
+
+## v5.2.47 (2017-05-16)
+
+## Changed
+- Moved tinker out to an external package ([#17002](https://github.com/laravel/framework/pull/17002))
+
+## v5.2.46 (2016-12-27)
+
+## Fixed
+- Fixed `beginTransaction()`: Reconnect if connection is lost ([#15511](https://github.com/laravel/framework/pull/15511))
 - Fixed deferring write connection ([#16673](https://github.com/laravel/framework/pull/16673))
-
 
 ## v5.2.45 (2016-08-26)
 
