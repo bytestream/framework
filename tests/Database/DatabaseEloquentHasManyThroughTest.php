@@ -64,7 +64,7 @@ class DatabaseEloquentHasManyThroughTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(2, $models[1]->foo[0]->country_id);
         $this->assertEquals(2, $models[1]->foo[1]->country_id);
         $this->assertEquals(2, count($models[1]->foo));
-        $this->assertEquals(0, count($models[2]->foo));
+        $this->assertEquals(0, count((array) $models[2]->foo));
     }
 
     public function testModelsAreProperlyMatchedToParentsWithNonPrimaryKey()
