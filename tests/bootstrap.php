@@ -30,3 +30,18 @@ use Carbon\Carbon;
 date_default_timezone_set('UTC');
 
 Carbon::setTestNow(Carbon::now());
+
+/*
+|--------------------------------------------------------------------------
+| PHPUnit 4/5/6 Support
+|--------------------------------------------------------------------------
+|
+| PHPUnit 6 introduced a breaking change that removed 
+| PHPUnit_Framework_TestCase as a base class, and replaced it with
+| \PHPUnit\Framework\TestCase 
+|
+*/
+
+if (! class_exists('\PHPUnit_Framework_TestCase') && class_exists('\PHPUnit\Framework\TestCase')) {
+    class_alias('\PHPUnit\Framework\TestCase', '\PHPUnit_Framework_TestCase');
+}
