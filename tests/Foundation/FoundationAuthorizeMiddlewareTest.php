@@ -33,7 +33,7 @@ class FoundationAuthorizeMiddlewareTest extends PHPUnit_Framework_TestCase
 
     public function testSimpleAbilityUnauthorized()
     {
-        $this->setExpectedException(AuthorizationException::class);
+        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}(AuthorizationException::class);
 
         $this->gate()->define('view-dashboard', function ($user, $additional = null) {
             $this->assertNull($additional);
@@ -71,7 +71,7 @@ class FoundationAuthorizeMiddlewareTest extends PHPUnit_Framework_TestCase
 
     public function testModelTypeUnauthorized()
     {
-        $this->setExpectedException(AuthorizationException::class);
+        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}(AuthorizationException::class);
 
         $this->gate()->define('create', function ($user, $model) {
             $this->assertEquals($model, 'App\User');
@@ -111,7 +111,7 @@ class FoundationAuthorizeMiddlewareTest extends PHPUnit_Framework_TestCase
 
     public function testModelUnauthorized()
     {
-        $this->setExpectedException(AuthorizationException::class);
+        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}(AuthorizationException::class);
 
         $post = new stdClass;
 

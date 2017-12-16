@@ -64,7 +64,7 @@ class DatabaseEloquentHasManyThroughTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(2, $models[1]->foo[0]->country_id);
         $this->assertEquals(2, $models[1]->foo[1]->country_id);
         $this->assertEquals(2, count($models[1]->foo));
-        $this->assertEquals(0, count($models[2]->foo));
+        $this->assertEquals(0, count((array) $models[2]->foo));
     }
 
     public function testModelsAreProperlyMatchedToParentsWithNonPrimaryKey()
@@ -95,7 +95,7 @@ class DatabaseEloquentHasManyThroughTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(2, $models[1]->foo[0]->country_id);
         $this->assertEquals(2, $models[1]->foo[1]->country_id);
         $this->assertEquals(2, count($models[1]->foo));
-        $this->assertEquals(0, count($models[2]->foo));
+        $this->assertEquals(0, count((array) $models[2]->foo));
     }
 
     public function testAllColumnsAreSelectedByDefault()
@@ -146,10 +146,13 @@ class DatabaseEloquentHasManyThroughTest extends PHPUnit_Framework_TestCase
 
     public function testFindOrFailThrowsException()
     {
-        $relation = $this->getMock('Illuminate\Database\Eloquent\Relations\HasManyThrough', ['find'], $this->getRelationArguments());
+        $relation = $this->getMockBuilder('Illuminate\Database\Eloquent\Relations\HasManyThrough')
+            ->setMethods(['find'])
+            ->setConstructorArgs($this->getRelationArguments())
+            ->getMock();
         $relation->expects($this->once())->method('find')->with('foo')->will($this->returnValue(null));
 
-        $this->setExpectedException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
+        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
 
         try {
             $relation->findOrFail('foo');
@@ -162,10 +165,13 @@ class DatabaseEloquentHasManyThroughTest extends PHPUnit_Framework_TestCase
 
     public function testFirstOrFailThrowsException()
     {
-        $relation = $this->getMock('Illuminate\Database\Eloquent\Relations\HasManyThrough', ['first'], $this->getRelationArguments());
+        $relation = $this->getMockBuilder('Illuminate\Database\Eloquent\Relations\HasManyThrough')
+            ->setMethods(['first'])
+            ->setConstructorArgs($this->getRelationArguments())
+            ->getMock();
         $relation->expects($this->once())->method('first')->with(['id' => 'foo'])->will($this->returnValue(null));
 
-        $this->setExpectedException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
+        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
 
         try {
             $relation->firstOrFail(['id' => 'foo']);
