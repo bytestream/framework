@@ -157,7 +157,7 @@ class DatabaseConnectionTest extends PHPUnit_Framework_TestCase
         $pdo->expects($this->once())->method('beginTransaction')->will($this->returnValue(true));
         $connection = $this->getMockConnection([], $pdo);
         $connection->beginTransaction();
-        $this->setExpectedException('RuntimeException', "Can't swap PDO instance while within transaction.");
+        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}('RuntimeException', "Can't swap PDO instance while within transaction.");
         $connection->disconnect();
     }
 

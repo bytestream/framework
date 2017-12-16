@@ -402,7 +402,7 @@ class DatabaseEloquentBelongsToManyTest extends PHPUnit_Framework_TestCase
         $relation = $this->getMockBuilder('Illuminate\Database\Eloquent\Relations\BelongsToMany')->setMethods(['find'])->setConstructorArgs($this->getRelationArguments())->getMock();
         $relation->expects($this->once())->method('find')->with('foo')->will($this->returnValue(null));
 
-        $this->setExpectedException(Illuminate\Database\Eloquent\ModelNotFoundException::class);
+        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}(Illuminate\Database\Eloquent\ModelNotFoundException::class);
 
         try {
             $relation->findOrFail('foo');
@@ -421,7 +421,7 @@ class DatabaseEloquentBelongsToManyTest extends PHPUnit_Framework_TestCase
             ->getMock();
         $relation->expects($this->once())->method('first')->with(['id' => 'foo'])->will($this->returnValue(null));
 
-        $this->setExpectedException(Illuminate\Database\Eloquent\ModelNotFoundException::class);
+        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}(Illuminate\Database\Eloquent\ModelNotFoundException::class);
 
         try {
             $relation->firstOrFail(['id' => 'foo']);
