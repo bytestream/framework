@@ -82,7 +82,7 @@ class QueueSqsQueueTest extends PHPUnit_Framework_TestCase
     {
         $now = Carbon\Carbon::now();
         $queue = $this->getMockBuilder('Illuminate\Queue\SqsQueue')
-            ->setMethods(['getQueue'])
+            ->setMethods(['createPayload', 'getSeconds', 'getQueue'])
             ->setConstructorArgs([$this->sqs, $this->queueName, $this->account])
             ->getMock();
         $queue->expects($this->once())->method('createPayload')->with($this->mockedJob, $this->mockedData)->will($this->returnValue($this->mockedPayload));
@@ -96,7 +96,7 @@ class QueueSqsQueueTest extends PHPUnit_Framework_TestCase
     public function testDelayedPushProperlyPushesJobOntoSqs()
     {
         $queue = $this->getMockBuilder('Illuminate\Queue\SqsQueue')
-            ->setMethods(['getQueue'])
+            ->setMethods(['createPayload', 'getSeconds', 'getQueue'])
             ->setConstructorArgs([$this->sqs, $this->queueName, $this->account])
             ->getMock();
         $queue->expects($this->once())->method('createPayload')->with($this->mockedJob, $this->mockedData)->will($this->returnValue($this->mockedPayload));

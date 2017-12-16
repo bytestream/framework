@@ -399,7 +399,7 @@ class DatabaseEloquentBelongsToManyTest extends PHPUnit_Framework_TestCase
 
     public function testFindOrFailThrowsException()
     {
-        $relation = $this->getMockBuilder('Illuminate\Database\Eloquent\Relations\BelongsToMany')->setMethods(['attach'])->setConstructorArgs($this->getRelationArguments())->getMock();
+        $relation = $this->getMockBuilder('Illuminate\Database\Eloquent\Relations\BelongsToMany')->setMethods(['find'])->setConstructorArgs($this->getRelationArguments())->getMock();
         $relation->expects($this->once())->method('find')->with('foo')->will($this->returnValue(null));
 
         $this->setExpectedException(Illuminate\Database\Eloquent\ModelNotFoundException::class);
@@ -434,7 +434,7 @@ class DatabaseEloquentBelongsToManyTest extends PHPUnit_Framework_TestCase
 
     public function testFindOrNewMethodFindsModel()
     {
-        $relation = $this->getMockBuilder('Illuminate\Database\Eloquent\Relations\BelongsToMany')->setMethods(['attach'])->setConstructorArgs($this->getRelationArguments())->getMock();
+        $relation = $this->getMockBuilder('Illuminate\Database\Eloquent\Relations\BelongsToMany')->setMethods(['find'])->setConstructorArgs($this->getRelationArguments())->getMock();
         $relation->expects($this->once())->method('find')->with('foo')->will($this->returnValue($model = m::mock('StdClass')));
         $relation->getRelated()->shouldReceive('newInstance')->never();
 
@@ -443,7 +443,7 @@ class DatabaseEloquentBelongsToManyTest extends PHPUnit_Framework_TestCase
 
     public function testFindOrNewMethodReturnsNewModel()
     {
-        $relation = $this->getMockBuilder('Illuminate\Database\Eloquent\Relations\BelongsToMany')->setMethods(['attach'])->setConstructorArgs($this->getRelationArguments())->getMock();
+        $relation = $this->getMockBuilder('Illuminate\Database\Eloquent\Relations\BelongsToMany')->setMethods(['find'])->setConstructorArgs($this->getRelationArguments())->getMock();
         $relation->expects($this->once())->method('find')->with('foo')->will($this->returnValue(null));
         $relation->getRelated()->shouldReceive('newInstance')->once()->andReturn($model = m::mock('StdClass'));
 
