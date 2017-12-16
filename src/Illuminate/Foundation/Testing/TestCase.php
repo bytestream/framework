@@ -135,6 +135,10 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
         }
 
         if (class_exists('Mockery')) {
+            if ($container = Mockery::getContainer()) {
+                $this->addToAssertionCount($container->mockery_getExpectationCount());
+            }
+                
             Mockery::close();
         }
 
