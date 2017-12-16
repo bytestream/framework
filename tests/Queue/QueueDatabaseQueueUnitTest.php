@@ -31,11 +31,10 @@ class QueueDatabaseQueueUnitTest extends PHPUnit_Framework_TestCase
 
     public function testDelayedPushProperlyPushesJobOntoDatabase()
     {
-        $queue = $this->getMock(
-            'Illuminate\Queue\DatabaseQueue',
-            ['getTime'],
-            [$database = m::mock('Illuminate\Database\Connection'), 'table', 'default']
-        );
+        $queue = $this->getMockBuilder('Illuminate\Queue\DatabaseQueue')
+            ->setMethods(['getTime'])
+            ->setConstructorArgs([$database = m::mock('Illuminate\Database\Connection'), 'table', 'default'])
+            ->getMock();
         $queue->expects($this->any())->method('getTime')->will($this->returnValue('time'));
         $database->shouldReceive('table')->with('table')->andReturn($query = m::mock('StdClass'));
         $query->shouldReceive('insertGetId')->once()->andReturnUsing(function ($array) {
