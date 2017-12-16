@@ -25,10 +25,6 @@ class ViewFlowTest extends PHPUnit_Framework_TestCase
         $files = new Filesystem;
         $files->deleteDirectory($this->tempDir);
 
-        if ($container = m::getContainer()) {
-            $this->addToAssertionCount($container->mockery_getExpectationCount());
-        }
-
         m::close();
     }
 

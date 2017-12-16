@@ -12,10 +12,6 @@ class DatabaseEloquentMorphTest extends PHPUnit_Framework_TestCase
     {
         Relation::morphMap([], false);
 
-        if ($container = m::getContainer()) {
-            $this->addToAssertionCount($container->mockery_getExpectationCount());
-        }
-
         m::close();
     }
 
