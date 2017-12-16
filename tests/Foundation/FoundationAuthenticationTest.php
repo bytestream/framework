@@ -48,6 +48,10 @@ class FoundationAuthenticationTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
+        if ($container = m::getContainer()) {
+            $this->addToAssertionCount($container->mockery_getExpectationCount());
+        }
+
         m::close();
     }
 

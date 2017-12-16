@@ -23,6 +23,11 @@ class ConsoleScheduledEventTest extends PHPUnit_Framework_TestCase
     {
         date_default_timezone_set($this->defaultTimezone);
         Carbon::setTestNow(null);
+        
+        if ($container = m::getContainer()) {
+            $this->addToAssertionCount($container->mockery_getExpectationCount());
+        }
+
         m::close();
     }
 
