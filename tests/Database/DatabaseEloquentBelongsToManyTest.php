@@ -415,7 +415,10 @@ class DatabaseEloquentBelongsToManyTest extends PHPUnit_Framework_TestCase
 
     public function testFirstOrFailThrowsException()
     {
-        $relation = $this->getMock('Illuminate\Database\Eloquent\Relations\BelongsToMany', ['first'], $this->getRelationArguments());
+        $relation = $this->getMockBuilder('Illuminate\Database\Eloquent\Relations\BelongsToMany')
+            ->setMethods(['first'])
+            ->setConstructorArgs($this->getRelationArguments())
+            ->getMock();
         $relation->expects($this->once())->method('first')->with(['id' => 'foo'])->will($this->returnValue(null));
 
         $this->setExpectedException(Illuminate\Database\Eloquent\ModelNotFoundException::class);

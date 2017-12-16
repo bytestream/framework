@@ -193,7 +193,7 @@ class DatabaseConnectionTest extends PHPUnit_Framework_TestCase
 
     public function testTransactionMethodRunsSuccessfully()
     {
-        $pdo = $this->getMock('DatabaseConnectionTestMockPDO', ['beginTransaction', 'commit']);
+        $pdo = $this->getMockBuilder('DatabaseConnectionTestMockPDO')->setMethods(['beginTransaction', 'commit'])->getMock();
         $mock = $this->getMockConnection([], $pdo);
         $pdo->expects($this->once())->method('beginTransaction');
         $pdo->expects($this->once())->method('commit');
@@ -262,7 +262,7 @@ class DatabaseConnectionTest extends PHPUnit_Framework_TestCase
         $method = (new ReflectionClass('Illuminate\Database\Connection'))->getMethod('run');
         $method->setAccessible(true);
 
-        $pdo = $this->getMock('DatabaseConnectionTestMockPDO', ['beginTransaction']);
+        $pdo = $this->getMockBuilder('DatabaseConnectionTestMockPDO')->setMethods(['beginTransaction'])->getMock();
         $mock = $this->getMockConnection(['tryAgainIfCausedByLostConnection'], $pdo);
         $pdo->expects($this->once())->method('beginTransaction');
         $mock->expects($this->never())->method('tryAgainIfCausedByLostConnection');
@@ -346,7 +346,10 @@ class DatabaseConnectionTest extends PHPUnit_Framework_TestCase
     {
         $pdo = $pdo ?: new DatabaseConnectionTestMockPDO;
         $defaults = ['getDefaultQueryGrammar', 'getDefaultPostProcessor', 'getDefaultSchemaGrammar'];
-        $connection = $this->getMock('Illuminate\Database\Connection', array_merge($defaults, $methods), [$pdo]);
+        $connection = $this->getMockBuilder('Illuminate\Database\Connection')
+            ->setMethods(array_merge($defaults, $methods))
+            ->setConstructorArgs([$pdo])
+            ->getMock();
         $connection->enableQueryLog();
 
         return $connection;

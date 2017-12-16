@@ -208,7 +208,9 @@ class DatabaseEloquentModelTest extends PHPUnit_Framework_TestCase
 
     public function testUpdateProcessWithoutTimestamps()
     {
-        $model = $this->getMock('EloquentModelStub', ['newQueryWithoutScopes', 'updateTimestamps', 'fireModelEvent']);
+        $model = $this->getMockBuilder('EloquentModelStub')
+            ->setMethods(['newQueryWithoutScopes', 'updateTimestamps', 'fireModelEvent'])
+            ->getMock();
         $model->timestamps = false;
         $query = m::mock('Illuminate\Database\Eloquent\Builder');
         $query->shouldReceive('where')->once()->with('id', '=', 1);
