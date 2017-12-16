@@ -137,7 +137,7 @@ class DatabaseConnectionTest extends PHPUnit_Framework_TestCase
         $pdo = $this->getMockBuilder('DatabaseConnectionTestMockPDO')->getMock();
         $pdo->expects($this->once())->method('beginTransaction');
         $pdo->expects($this->once())->method('exec')->will($this->throwException(new Exception));
-        $connection = $this->getMockConnection([], $pdo);
+        $connection = $this->getMockConnection(['reconnect'], $pdo);
         $queryGrammar = $this->getMockBuilder('Illuminate\Database\Query\Grammars\Grammar')->getMock();
         $queryGrammar->expects($this->once())->method('supportsSavepoints')->will($this->returnValue(true));
         $connection->setQueryGrammar($queryGrammar);
