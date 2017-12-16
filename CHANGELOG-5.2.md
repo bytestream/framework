@@ -1,5 +1,10 @@
 # Release Notes
 
+## v5.2.49 (2017-12-16)
+
+## Added
+- PHP 7.2 Support ([#17864](https://github.com/laravel/framework/pull/17864), [#19381](https://github.com/laravel/framework/pull/19381), [#20258](https://github.com/laravel/framework/pull/20258), [#20606](https://github.com/laravel/framework/pull/20606), [#20635](https://github.com/laravel/framework/pull/20635), [#22374](https://github.com/laravel/framework/pull/22374))
+
 ## v5.2.48 (2017-09-07)
 
 ## Fixed
