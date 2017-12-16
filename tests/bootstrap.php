@@ -61,3 +61,7 @@ if (! class_exists('\PHPUnit_Framework_Constraint_Not') && class_exists('\PHPUni
 if (! class_exists('\PHPUnit_Framework_Constraint') && class_exists('\PHPUnit\Framework\Constraint\Constraint')) {
     class_alias('\PHPUnit\Framework\Constraint\Constraint', 'PHPUnit_Framework_Constraint');
 }
+
+if (! class_exists('\PHPUnit_Framework_Error_Notice') && class_exists('\PHPUnit\Framework\Error\Notice')) {
+    class_alias('\PHPUnit\Framework\Error\Notice', 'PHPUnit_Framework_Error_Notice');
+}
