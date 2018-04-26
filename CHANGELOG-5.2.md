@@ -1,5 +1,10 @@
 # Release Notes
 
+## v5.2.50 (2018-04-26)
+
+## Fixed
+- Fixed column_name case sensitivity ([#21037](https://github.com/laravel/framework/pull/21037))
+
 ## v5.2.49 (2017-12-16)
 
 ## Added
