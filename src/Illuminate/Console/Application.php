@@ -105,7 +105,7 @@ class Application extends SymfonyApplication implements ApplicationContract
      */
     public static function phpBinary()
     {
-        return ProcessUtils::escapeArgument((new PhpExecutableFinder)->find(false));
+        return ProcessUtils::escapeArgument((new PhpExecutableFinder)->find());
     }
 
     /**
