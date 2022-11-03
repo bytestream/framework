@@ -1,0 +1,13 @@
+version: "1"
+
+rules:
+  - base: 8.x
+    upstream: laravel:8.x
+    # Optional, one of [none, merge, squash, rebase, hardreset], Default: none.
+    mergeMethod: merge
+    # Optional, merge pull request even when the mergeable_state is not clean. Default: false
+    mergeUnstable: false
+    reviewers:
+      - bytestream
+
+label: ":arrow_heading_down: pull"
