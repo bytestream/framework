@@ -232,7 +232,7 @@ class QueueWorkerTest extends TestCase
         $this->events->shouldNotHaveReceived('dispatch', [m::type(JobProcessed::class)]);
     }
 
-    public function testJobIsFailedIfItHasAlreadyExpired()
+    public function testJobIsTriedEvenIfRetryUntilHasAlreadyExpired()
     {
         $job = new WorkerFakeJob(function ($job) {
             $job->attempts++;
@@ -241,6 +241,26 @@ class QueueWorkerTest extends TestCase
         $job->retryUntil = Carbon::now()->addSeconds(2)->getTimestamp();
 
         $job->attempts = 1;
+
+        Carbon::setTestNow(
+            Carbon::now()->addSeconds(3)
+        );
+
+        $worker = $this->getWorker('default', ['queue' => [$job]]);
+        $worker->runNextJob('default', 'queue', $this->workerOptions());
+
+        $this->events->shouldHaveReceived('dispatch', [m::type(JobProcessed::class)]);
+    }
+
+    public function testJobIsFailedIfItHasAlreadyExpired()
+    {
+        $job = new WorkerFakeJob(function ($job) {
+            $job->attempts++;
+        });
+
+        $job->retryUntil = Carbon::now()->addSeconds(2)->getTimestamp();
+
+        $job->attempts = 2;
 
         Carbon::setTestNow(
             Carbon::now()->addSeconds(3)

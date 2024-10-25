@@ -515,7 +515,7 @@ class Worker
 
         $retryUntil = $job->retryUntil();
 
-        if ($retryUntil && Carbon::now()->getTimestamp() <= $retryUntil) {
+        if ($retryUntil && ($job->attempts() === 1 || Carbon::now()->getTimestamp() <= $retryUntil)) {
             return;
         }
 
