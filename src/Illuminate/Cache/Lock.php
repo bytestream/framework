@@ -147,6 +147,16 @@ abstract class Lock implements LockContract
     }
 
     /**
+     * Get the name of the lock.
+     *
+     * @return string
+     */
+    public function name()
+    {
+        return $this->name;
+    }
+
+    /**
      * Determines whether this lock is allowed to release the lock in the driver.
      *
      * @return bool
